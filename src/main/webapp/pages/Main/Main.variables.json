@@ -420,7 +420,7 @@
     } ],
     "type" : "string",
     "isList" : true,
-    "saveInPhonegap" : false,
-    "twoWayBinding" : false
+    "twoWayBinding" : false,
+    "saveInPhonegap" : false
   }
 }
