@@ -1,0 +1,32 @@
+{
+  "description" : null,
+  "methods" : {
+    "generatePdfReport" : [ {
+      "url" : {
+        "value" : "/generatePdfReport",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : {
+        "orderId" : {
+          "name" : {
+            "value" : "orderId",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        }
+      }
+    } ]
+  }
+}

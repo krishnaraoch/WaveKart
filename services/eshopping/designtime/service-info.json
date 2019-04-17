@@ -1,0 +1,6 @@
+{
+  "id" : "eshopping",
+  "type" : "DataService",
+  "packageNames" : [ "com.wavemaker.sampleapps.wavekart.eshopping" ],
+  "title" : "eshopping"
+}

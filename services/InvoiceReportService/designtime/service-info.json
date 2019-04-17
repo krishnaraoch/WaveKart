@@ -1,0 +1,7 @@
+{
+  "id" : "InvoiceReportService",
+  "type" : "JavaService",
+  "packageNames" : [ "com.wavemaker.sampleapps.wavekart.invoicereportservice" ],
+  "serviceClassNames" : [ "com.wavemaker.sampleapps.wavekart.invoicereportservice.InvoiceReportService" ],
+  "title" : "InvoiceReportService"
+}

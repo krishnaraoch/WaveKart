@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <bean class="com.wavemaker.runtime.cors.CorsBeanPostProcessor" id="corsBeanPostProcessor"/>
+    <bean class="org.springframework.web.cors.UrlBasedCorsConfigurationSource" id="corsConfigurationSource"/>
+    <bean class="org.springframework.web.filter.CorsFilter" id="corsFilter">
+        <constructor-arg ref="corsConfigurationSource"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.SecurityService" id="securityService"/>
+    <bean class="com.wavemaker.runtime.security.controller.SecurityController" id="securityController"/>
+    <bean class="com.wavemaker.runtime.web.filter.SSLSecureFilter" id="sslSecureFilter"/>
+    <bean class="com.wavemaker.runtime.security.xss.filter.WMXSSFilter" id="wmXSSFilter"/>
+    <bean class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>
+                    classpath:securityService.properties
+                </value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="searchSystemEnvironment" value="true"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.config.WMAppSecurityConfig" id="WMAppSecurityConfig">
+        <property name="sslConfig" ref="sslConfig"/>
+        <property name="xssConfig" ref="xssConfig"/>
+        <property name="enforceSecurity">
+            <value>${enabled}</value>
+        </property>
+        <property name="loginConfig" ref="loginConfig"/>
+        <property name="csrfConfig" ref="csrfConfig"/>
+        <property name="rolesConfig" ref="rolesConfig"/>
+        <property name="tokenAuthConfig" ref="tokenAuthConfig"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.SSLConfig" id="sslConfig">
+        <property name="useSSL" value="${general.ssl.enabled}"/>
+        <property name="sslPort" value="${general.ssl.port}"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.XSSConfig" id="xssConfig">
+        <property name="enforceXssSecurity" value="${general.xss.enabled}"/>
+        <property name="policyFile" value="wm-xss-policies.xml"/>
+        <property name="xssFilterStrategy" value="NONE"/>
+    </bean>
+    <security:global-method-security authentication-manager-ref="authenticationManager" pre-post-annotations="enabled"/>
+    <security:http pattern="/app.css" security="none"/>
+    <security:http pattern="/app.js" security="none"/>
+    <security:http pattern="/app.variables.json" security="none"/>
+    <security:http pattern="/login.html" security="none"/>
+    <security:http pattern="/favicon.ico" security="none"/>
+    <security:http pattern="/print.css" security="none"/>
+    <security:http pattern="/services/application/wmProperties.js" security="none"/>
+    <security:http pattern="/services/webprocess/**" security="none"/>
+    <security:http pattern="/**/*.js" security="none"/>
+    <security:http pattern="/**/*.css" security="none"/>
+    <security:http pattern="/ng-bundle/**" security="none"/>
+    <security:http pattern="/config.json" security="none"/>
+    <security:http pattern="/types.js" security="none"/>
+    <security:http pattern="/pages/Common/**" security="none"/>
+    <security:http pattern="/pages/Login/**" security="none"/>
+    <security:http pattern="/themes/**" security="none"/>
+    <security:http pattern="/resources/**" security="none"/>
+    <security:http pattern="/**/wmapp/**" security="none"/>
+    <security:http pattern="/**/wmmobile/**" security="none"/>
+    <security:http pattern="/app/prefabs/**" security="none"/>
+    <security:http authentication-manager-ref="authenticationManager" auto-config="false" create-session="stateless" disable-url-rewriting="true" entry-point-ref="appAuthenticationEntryPoint" name="interceptUrlsBean" security-context-repository-ref="securityContextRepository" use-expressions="true">
+        <security:intercept-url access="permitAll" pattern="/index.html"/>
+        <security:intercept-url access="permitAll" pattern="/j_spring_security_check"/>
+        <security:csrf disabled="true"/>
+        <security:intercept-url access="permitAll" pattern="/pages/headerLogin/**"/>
+        <security:intercept-url access="permitAll" pattern="/j_spring_security_logout"/>
+        <security:intercept-url access="permitAll" pattern="/pages/Accessories/**"/>
+        <security:intercept-url access="hasAnyRole('ROLE_admin')" pattern="/pages/Admin/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/AllProducts/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/Cameras/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/FilterOptions_Partial/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/FilterSelect_Partial/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/Laptops/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/Main/**"/>
+        <security:intercept-url access="hasAnyRole('ROLE_user')" pattern="/pages/MyCart/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/Orders/**"/>
+        <security:intercept-url access="hasAnyRole('ROLE_admin')" pattern="/pages/OrdersList_Admin/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/Peripherals/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/Products/**"/>
+        <security:intercept-url access="hasAnyRole('ROLE_admin')" pattern="/pages/ProductsList_Admin/**"/>
+        <security:intercept-url access="hasAnyRole('ROLE_user')" pattern="/pages/Profile/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/ScrollType_footer/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/Smartphones/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/TotalProd_Partial/**"/>
+        <security:intercept-url access="hasAnyRole('ROLE_admin')" pattern="/pages/UsersList_Admin/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/footer/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/header/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/leftnav/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/rightnav/**"/>
+        <security:intercept-url access="permitAll" pattern="/pages/topnav/**"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/CartDetails/*/cartItemses"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/CartDetails/*"/>
+        <security:intercept-url access="isAuthenticated()" method="PUT" pattern="/services/eshopping/CartDetails/*"/>
+        <security:intercept-url access="isAuthenticated()" method="DELETE" pattern="/services/eshopping/CartDetails/*"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/CartDetails/count"/>
+        <security:intercept-url access="isAuthenticated()" method="POST" pattern="/services/eshopping/CartDetails/search"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/CartDetails"/>
+        <security:intercept-url access="isAuthenticated()" method="POST" pattern="/services/eshopping/CartDetails"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/CartDetails/export/*"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/CartDetails/userId/*"/>
+        <security:intercept-url access="isAuthenticated()" pattern="/services/eshopping/CartDetails/**"/>
+        <security:intercept-url access="isAuthenticated()" method="PUT" pattern="/services/eshopping/CartItems/composite-id"/>
+        <security:intercept-url access="isAuthenticated()" method="POST" pattern="/services/eshopping/CartItems"/>
+        <security:intercept-url access="isAuthenticated()" pattern="/services/eshopping/CartItems/**"/>
+        <security:intercept-url access="isAuthenticated()" pattern="/services/eshopping/Itemorder/**"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/Orders/*"/>
+        <security:intercept-url access="isAuthenticated()" method="PUT" pattern="/services/eshopping/Orders/*"/>
+        <security:intercept-url access="isAuthenticated()" method="DELETE" pattern="/services/eshopping/Orders/*"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/Orders/count"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/Orders/export/*"/>
+        <security:intercept-url access="isAuthenticated()" method="POST" pattern="/services/eshopping/Orders/search"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/Orders"/>
+        <security:intercept-url access="isAuthenticated()" method="POST" pattern="/services/eshopping/Orders"/>
+        <security:intercept-url access="isAuthenticated()" method="GET" pattern="/services/eshopping/Orders/*/orderLineItemses"/>
+        <security:intercept-url access="permitAll" pattern="/services/eshopping/Orders/**"/>
+        <security:intercept-url access="permitAll" pattern="/services/eshopping/ProductDetails/**"/>
+        <security:intercept-url access="isAuthenticated()" pattern="/services/eshopping/**"/>
+        <security:intercept-url access="permitAll" pattern="/services/prefabs/**/servicedefs"/>
+        <security:intercept-url access="permitAll" pattern="/services/security/**"/>
+        <security:intercept-url access="permitAll" pattern="/services/servicedefs"/>
+        <security:intercept-url access="permitAll" pattern="/services/application/i18n/**"/>
+        <security:intercept-url access="permitAll" method="OPTIONS" pattern="/**"/>
+        <security:intercept-url access="isAuthenticated()" pattern="/"/>
+        <security:intercept-url access="isAuthenticated()" pattern="/**"/>
+        <security:headers disabled="true"/>
+        <security:request-cache ref="nullRequestCache"/>
+        <security:custom-filter before="PRE_AUTH_FILTER" ref="wmTokenBasedPreAuthenticatedProcessingFilter"/>
+        <security:custom-filter position="REMEMBER_ME_FILTER" ref="rememberMeAuthFilter"/>
+        <security:custom-filter position="LOGOUT_FILTER" ref="logoutFilter"/>
+        <security:custom-filter position="BASIC_AUTH_FILTER" ref="WMBasicAuthenticationFilter"/>
+        <security:custom-filter position="FORM_LOGIN_FILTER" ref="WMSecAuthFilter"/>
+        <security:custom-filter position="CSRF_FILTER" ref="wmcsrfFilter"/>
+        <security:custom-filter after="SECURITY_CONTEXT_FILTER" ref="loginWebProcessFilter"/>
+    </security:http>
+    <bean class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" id="sessionFixationProtectionStrategy"/>
+    <bean class="org.springframework.security.web.csrf.CsrfAuthenticationStrategy" id="csrfAuthenticationStrategy">
+        <constructor-arg ref="csrfTokenRepository"/>
+    </bean>
+    <security:authentication-manager id="authenticationManager">
+        <security:authentication-provider ref="databaseAuthenticationProvider"/>
+        <security:authentication-provider ref="rememberMeAuthenticationProvider"/>
+    </security:authentication-manager>
+    <bean class="com.wavemaker.runtime.security.WMAppAccessDeniedHandler" id="wmAppAccessDeniedHandler"/>
+    <bean class="com.wavemaker.runtime.security.csrf.CsrfSecurityRequestMatcher" id="csrfSecurityRequestMatcher">
+        <property name="csrfConfig" ref="csrfConfig"/>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.logout.LogoutFilter" id="logoutFilter">
+        <constructor-arg ref="logoutSuccessHandler"/>
+        <constructor-arg>
+            <list>
+                <ref bean="securityContextLogoutHandler"/>
+                <ref bean="rememberMeServices"/>
+                <ref bean="wmCsrfLogoutHandler"/>
+            </list>
+        </constructor-arg>
+        <property name="filterProcessesUrl" value="/j_spring_security_logout"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.csrf.WMCsrfLogoutHandler" id="wmCsrfLogoutHandler">
+        <constructor-arg>
+            <bean class="org.springframework.security.web.csrf.CsrfLogoutHandler">
+                <constructor-arg ref="csrfTokenRepository"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" id="securityContextLogoutHandler"/>
+    <bean class="org.springframework.security.web.savedrequest.NullRequestCache" id="nullRequestCache"/>
+    <bean class="com.wavemaker.runtime.security.filter.WMTokenBasedPreAuthenticatedProcessingFilter" id="wmTokenBasedPreAuthenticatedProcessingFilter">
+        <constructor-arg ref="authenticationManager"/>
+        <constructor-arg ref="wmTokenBasedAuthenticationService"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.token.WMTokenBasedAuthenticationService" id="wmTokenBasedAuthenticationService"/>
+    <bean class="com.wavemaker.runtime.security.WMAuthenticationFailureHandler" id="failureHandler"/>
+    <bean class="org.springframework.security.authentication.RememberMeAuthenticationProvider" id="rememberMeAuthenticationProvider">
+        <constructor-arg value="WM_APP_KEY"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.LoginConfig" id="loginConfig">
+        <property name="pageName" value="Login"/>
+        <property name="sessionTimeout">
+            <bean class="com.wavemaker.commons.model.security.SessionTimeoutConfig">
+                <property name="pageName" value=""/>
+                <property name="timeoutValue" value="${general.session.timeout}"/>
+                <property name="type">
+                    <value type="com.wavemaker.commons.model.security.LoginType">DIALOG</value>
+                </property>
+            </bean>
+        </property>
+        <property name="type">
+            <value type="com.wavemaker.commons.model.security.LoginType">DIALOG</value>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.CSRFConfig" id="csrfConfig">
+        <property name="enforceCsrfSecurity" value="${general.xsrf.enabled}"/>
+        <property name="headerName" value="X-WM-XSRF-TOKEN"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.RolesConfig" id="rolesConfig">
+        <property name="roleMap">
+            <description>Roles based landing page definitions</description>
+            <map key-type="java.lang.String" value-type="com.wavemaker.commons.model.security.RoleConfig">
+                <entry key="admin">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Admin"/>
+                    </bean>
+                </entry>
+                <entry key="user">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter" id="WMSecAuthFilter">
+        <property name="authenticationSuccessHandler" ref="successHandler"/>
+        <property name="authenticationFailureHandler" ref="failureHandler"/>
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="filterProcessesUrl" value="/j_spring_security_check"/>
+        <property name="usernameParameter" value="j_username"/>
+        <property name="passwordParameter" value="j_password"/>
+        <property name="rememberMeServices" ref="rememberMeServices"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.WMAuthenticationEntryPoint" id="WMSecAuthEntryPoint">
+        <constructor-arg value="/index.html"/>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler" id="logoutSuccessHandler">
+        <property name="defaultTargetUrl" value="/"/>
+        <property name="redirectStrategy" ref="redirectStrategyBean"/>
+    </bean>
+    <bean class="org.springframework.security.web.DefaultRedirectStrategy" id="redirectStrategyBean"/>
+    <bean class="org.springframework.security.authentication.dao.DaoAuthenticationProvider" id="databaseAuthenticationProvider">
+        <property name="userDetailsService" ref="jdbcDaoImpl"/>
+        <property name="passwordEncoder" ref="passwordEncoder"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.provider.database.users.DefaultUserProviderImpl" id="defaultUserProvider">
+        <property name="usersByUsernameQuery">
+            <value>SELECT userId, password, 1, userName FROM UserDetails WHERE userName = ?</value>
+        </property>
+        <property name="hql" value="true"/>
+        <property name="hibernateTemplate">
+            <ref bean="eshoppingTemplate"/>
+        </property>
+        <property name="transactionManager">
+            <ref bean="eshoppingTransactionManager"/>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.provider.database.authorities.DefaultAuthoritiesProviderImpl" id="defaultAuthoritiesProvider">
+        <property name="hql" value="true"/>
+        <property name="rolePrefix">
+            <value>ROLE_</value>
+        </property>
+        <property name="authoritiesByUsernameQuery">
+            <value>SELECT userId, role FROM UserDetails WHERE userName = ?</value>
+        </property>
+        <property name="rolesByQuery" value="true"/>
+        <property name="hibernateTemplate">
+            <ref bean="eshoppingTemplate"/>
+        </property>
+        <property name="transactionManager">
+            <ref bean="eshoppingTransactionManager"/>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.provider.database.DatabaseUserDetailsService" id="jdbcDaoImpl">
+        <property name="userProvider">
+            <ref bean="defaultUserProvider"/>
+        </property>
+        <property name="authoritiesProvider">
+            <ref bean="defaultAuthoritiesProvider"/>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.TokenAuthConfig" id="tokenAuthConfig">
+        <property name="enabled" value="${general.tokenService.enabled}"/>
+        <property name="parameter" value="${general.tokenService.parameter}"/>
+        <property name="tokenValiditySeconds" value="${general.tokenService.tokenValiditySeconds}"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.filter.WMXContentTypeOptionsFilter" id="wmXContentTypeOptionsFilter"/>
+    <bean class="com.wavemaker.commons.model.security.CorsConfig" id="corsConfig">
+        <property name="enabled" value="${general.cors.enabled}"/>
+        <property name="maxAge" value="${general.cors.maxAge}"/>
+        <property name="pathEntries">
+            <list>
+                <bean class="com.wavemaker.commons.model.security.PathEntry" id="root">
+                    <property name="name" value="root"/>
+                    <property name="path" value="/**"/>
+                    <property name="allowedOrigins" value="${general.cors.root.allowedOrigins}"/>
+                </bean>
+            </list>
+        </property>
+        <property name="allowCredentials" value="${general.cors.allowCredentials}"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.filter.WMFrameOptionsHeaderFilter" id="wmFrameOptionsFilter">
+        <property name="frameOptions" ref="frameOptions"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.FrameOptions" id="frameOptions">
+        <property name="enabled" value="${general.frameOptions.enabled}"/>
+        <property name="mode" value="${general.frameOptions.mode}"/>
+        <property name="allowFromUrl" value="${general.frameOptions.allowFromUrl}"/>
+    </bean>
+    <bean class="org.springframework.security.web.FilterChainProxy" id="wmCompositeSecurityFilter">
+        <constructor-arg>
+            <security:filter-chain filters="sslSecureFilter, wmXSSFilter, wmFrameOptionsFilter, wmXContentTypeOptionsFilter,corsFilter" pattern="/**"/>
+        </constructor-arg>
+    </bean>
+    <bean class="org.springframework.security.crypto.password.NoOpPasswordEncoder" id="passwordEncoder"/>
+    <bean class="com.wavemaker.runtime.security.entrypoint.WMCompositeAuthenticationEntryPoint" id="appAuthenticationEntryPoint"/>
+    <bean class="com.wavemaker.runtime.security.csrf.WMCsrfFilter" id="wmcsrfFilter">
+        <constructor-arg ref="csrfTokenRepository"/>
+        <constructor-arg ref="csrfSecurityRequestMatcher"/>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy" id="compositeSessionAuthenticationStrategy"/>
+    <bean class="com.wavemaker.runtime.security.csrf.WMCsrfTokenRepository" id="csrfTokenRepository">
+        <constructor-arg>
+            <bean class="com.wavemaker.runtime.security.csrf.WMHttpSessionCsrfTokenRepository">
+                <property name="csrfConfig" ref="csrfConfig"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.filter.WMBasicAuthenticationFilter" id="WMBasicAuthenticationFilter">
+        <constructor-arg ref="authenticationManager"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.rememberme.WMRememberMeAuthenticationFilter" id="rememberMeAuthFilter">
+        <constructor-arg ref="authenticationManager"/>
+        <constructor-arg ref="rememberMeServices"/>
+        <property name="authenticationSuccessHandler" ref="rememberMeAuthenticationSuccessHandler"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.handler.WMApplicationAuthenticationSuccessHandler" id="rememberMeAuthenticationSuccessHandler">
+        <property name="defaultSuccessHandlerList">
+            <list>
+                <ref bean="wmSecurityContextRepositorySuccessHandler"/>
+                <ref bean="wmCsrfTokenRepositorySuccessHandler"/>
+            </list>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.handler.WMCsrfTokenRepositorySuccessHandler" id="wmCsrfTokenRepositorySuccessHandler">
+        <constructor-arg ref="csrfTokenRepository"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.handler.WMCsrfTokenResponseWriterAuthenticationSuccessHandler" id="wmCsrfTokenResponseWriterAuthenticationSuccessHandler">
+        <constructor-arg ref="csrfTokenRepository"/>
+    </bean>
+    <bean class="org.springframework.security.web.context.HttpSessionSecurityContextRepository" id="securityContextRepository">
+        <property name="disableUrlRewriting" value="true"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.handler.WMSecurityContextRepositorySuccessHandler" id="wmSecurityContextRepositorySuccessHandler">
+        <constructor-arg ref="securityContextRepository"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.handler.WMApplicationAuthenticationSuccessHandler" id="successHandler">
+        <property name="defaultSuccessHandlerList">
+            <list>
+                <ref bean="wmSecurityContextRepositorySuccessHandler"/>
+                <ref bean="wmCsrfTokenRepositorySuccessHandler"/>
+                <ref bean="wmCsrfTokenResponseWriterAuthenticationSuccessHandler"/>
+            </list>
+        </property>
+        <property name="authenticationSuccessRedirectionHandler" ref="wmAuthenticationSuccessRedirectionHandler"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.handler.WMAuthenticationSuccessRedirectionHandler" id="wmAuthenticationSuccessRedirectionHandler"/>
+    <bean class="org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl" id="rememberMeRepository"/>
+    <bean class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices" id="rememberMeServices">
+        <constructor-arg value="WM_APP_KEY"/>
+        <constructor-arg ref="rememberMeRepository"/>
+        <property name="parameter" value="j_rememberme"/>
+        <property name="tokenValiditySeconds" value="${general.rememberMe.timeOut}"/>
+        <constructor-arg ref="jdbcDaoImpl"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.token.repository.WMTokenRepository" id="tokenRepository"/>
+    <bean class="com.wavemaker.runtime.webprocess.filter.LoginProcessFilter" id="loginWebProcessFilter"/>
+</beans>

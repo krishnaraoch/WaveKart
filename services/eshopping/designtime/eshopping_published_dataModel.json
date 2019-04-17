@@ -1,0 +1,1230 @@
+{
+  "name" : "eshopping",
+  "description" : "eshopping",
+  "packageName" : "com.wavemaker.sampleapps.wavekart.eshopping",
+  "cascadeEnabled" : false,
+  "draft" : false,
+  "tables" : [ {
+    "name" : "USER_DETAILS",
+    "oldName" : "USER_DETAILS",
+    "entityName" : "UserDetails",
+    "type" : "TABLE",
+    "schema" : "PUBLIC",
+    "catalog" : "PUBLIC",
+    "filter" : null,
+    "ignoreRefreshAfterInsert" : false,
+    "columns" : [ {
+      "name" : "USER_ID",
+      "oldName" : "USER_ID",
+      "fieldName" : "userId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "USER_NAME",
+      "oldName" : "USER_NAME",
+      "fieldName" : "userName",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PASSWORD",
+      "oldName" : "PASSWORD",
+      "fieldName" : "password",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PHONE_NUMBER",
+      "oldName" : "PHONE_NUMBER",
+      "fieldName" : "phoneNumber",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 50,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "EMAIL_ADDRESS",
+      "oldName" : "EMAIL_ADDRESS",
+      "fieldName" : "emailAddress",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "ROLE",
+      "oldName" : "ROLE",
+      "fieldName" : "role",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 25,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    } ],
+    "primaryKey" : {
+      "name" : "SYS_PK_10106",
+      "virtual" : false,
+      "columns" : [ "USER_ID" ],
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "composite" : false
+    },
+    "temporals" : [ ],
+    "relations" : [ ],
+    "constraints" : [ {
+      "name" : "SYS_IDX_SYS_CT_10112_10120",
+      "schemaName" : null,
+      "type" : "UNIQUE",
+      "columns" : [ "EMAIL_ADDRESS" ],
+      "virtual" : false,
+      "composite" : false
+    } ],
+    "tableDataLockingOptions" : {
+      "versionColumnName" : "VERSION",
+      "lockingStrategy" : "NONE",
+      "overrideStrategy" : "INHERIT"
+    }
+  }, {
+    "name" : "PRODUCT_DETAILS",
+    "oldName" : "PRODUCT_DETAILS",
+    "entityName" : "ProductDetails",
+    "type" : "TABLE",
+    "schema" : "PUBLIC",
+    "catalog" : "PUBLIC",
+    "filter" : null,
+    "ignoreRefreshAfterInsert" : false,
+    "columns" : [ {
+      "name" : "PRODUCT_ID",
+      "oldName" : "PRODUCT_ID",
+      "fieldName" : "productId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PRODUCT_NAME",
+      "oldName" : "PRODUCT_NAME",
+      "fieldName" : "productName",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PRODUCT_DESCRIPTION",
+      "oldName" : "PRODUCT_DESCRIPTION",
+      "fieldName" : "productDescription",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "CATEGORY",
+      "oldName" : "CATEGORY",
+      "fieldName" : "category",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "IMAGE_URL",
+      "oldName" : "IMAGE_URL",
+      "fieldName" : "imageUrl",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PRICE",
+      "oldName" : "PRICE",
+      "fieldName" : "price",
+      "sqlType" : "number",
+      "javaType" : "big_decimal",
+      "length" : 255,
+      "scale" : 9,
+      "precision" : 64,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    } ],
+    "primaryKey" : {
+      "name" : "SYS_PK_10092",
+      "virtual" : false,
+      "columns" : [ "PRODUCT_ID" ],
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "composite" : false
+    },
+    "temporals" : [ ],
+    "relations" : [ ],
+    "constraints" : [ ],
+    "tableDataLockingOptions" : {
+      "versionColumnName" : "VERSION",
+      "lockingStrategy" : "NONE",
+      "overrideStrategy" : "INHERIT"
+    }
+  }, {
+    "name" : "PRODUCT_INVENTORY",
+    "oldName" : "PRODUCT_INVENTORY",
+    "entityName" : "ProductInventory",
+    "type" : "TABLE",
+    "schema" : "PUBLIC",
+    "catalog" : "PUBLIC",
+    "filter" : null,
+    "ignoreRefreshAfterInsert" : false,
+    "columns" : [ {
+      "name" : "PRODUCT_ID",
+      "oldName" : "PRODUCT_ID",
+      "fieldName" : "productId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "QUANTITY",
+      "oldName" : "QUANTITY",
+      "fieldName" : "quantity",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : true,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "STATUS",
+      "oldName" : "STATUS",
+      "fieldName" : "status",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    } ],
+    "primaryKey" : {
+      "name" : "SYS_PK_10122",
+      "virtual" : false,
+      "columns" : [ "PRODUCT_ID" ],
+      "generator" : {
+        "generatorType" : "assigned",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "composite" : false
+    },
+    "temporals" : [ ],
+    "relations" : [ {
+      "name" : "SYS_FK_10124",
+      "fieldName" : "productDetails",
+      "cardinality" : "OneToOne",
+      "sourceTable" : "PRODUCT_INVENTORY",
+      "targetTable" : "PRODUCT_DETAILS",
+      "mappings" : [ {
+        "sourceColumn" : "PRODUCT_ID",
+        "targetColumn" : "PRODUCT_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    } ],
+    "constraints" : [ ],
+    "tableDataLockingOptions" : {
+      "versionColumnName" : "VERSION",
+      "lockingStrategy" : "NONE",
+      "overrideStrategy" : "INHERIT"
+    }
+  }, {
+    "name" : "CART_ITEMS",
+    "oldName" : "CART_ITEMS",
+    "entityName" : "CartItems",
+    "type" : "TABLE",
+    "schema" : "PUBLIC",
+    "catalog" : "PUBLIC",
+    "filter" : null,
+    "ignoreRefreshAfterInsert" : false,
+    "columns" : [ {
+      "name" : "CART_ID",
+      "oldName" : "CART_ID",
+      "fieldName" : "cartId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PRODUCT_ID",
+      "oldName" : "PRODUCT_ID",
+      "fieldName" : "productId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PRODUCT_QUANTITY",
+      "oldName" : "PRODUCT_QUANTITY",
+      "fieldName" : "productQuantity",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : true,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "CURRENT_PRICE",
+      "oldName" : "CURRENT_PRICE",
+      "fieldName" : "currentPrice",
+      "sqlType" : "number",
+      "javaType" : "big_decimal",
+      "length" : 255,
+      "scale" : 9,
+      "precision" : 64,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "TOTAL_PRICE",
+      "oldName" : "TOTAL_PRICE",
+      "fieldName" : "totalPrice",
+      "sqlType" : "number",
+      "javaType" : "big_decimal",
+      "length" : 255,
+      "scale" : 9,
+      "precision" : 64,
+      "nullable" : true,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    } ],
+    "primaryKey" : {
+      "name" : "SYS_PK_10163",
+      "virtual" : false,
+      "columns" : [ "CART_ID", "PRODUCT_ID" ],
+      "generator" : {
+        "generatorType" : "assigned",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "composite" : true
+    },
+    "temporals" : [ ],
+    "relations" : [ {
+      "name" : "SYS_FK_10165",
+      "fieldName" : "cartDetails",
+      "cardinality" : "ManyToOne",
+      "sourceTable" : "CART_ITEMS",
+      "targetTable" : "CART_DETAILS",
+      "mappings" : [ {
+        "sourceColumn" : "CART_ID",
+        "targetColumn" : "CART_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    }, {
+      "name" : "SYS_FK_10164",
+      "fieldName" : "productDetails",
+      "cardinality" : "ManyToOne",
+      "sourceTable" : "CART_ITEMS",
+      "targetTable" : "PRODUCT_DETAILS",
+      "mappings" : [ {
+        "sourceColumn" : "PRODUCT_ID",
+        "targetColumn" : "PRODUCT_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    } ],
+    "constraints" : [ ],
+    "tableDataLockingOptions" : {
+      "versionColumnName" : "VERSION",
+      "lockingStrategy" : "NONE",
+      "overrideStrategy" : "INHERIT"
+    }
+  }, {
+    "name" : "ORDER_LINE_ITEMS",
+    "oldName" : "ORDER_LINE_ITEMS",
+    "entityName" : "OrderLineItems",
+    "type" : "TABLE",
+    "schema" : "PUBLIC",
+    "catalog" : "PUBLIC",
+    "filter" : null,
+    "ignoreRefreshAfterInsert" : false,
+    "columns" : [ {
+      "name" : "ORDER_ID",
+      "oldName" : "ORDER_ID",
+      "fieldName" : "orderId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PRODUCT_ID",
+      "oldName" : "PRODUCT_ID",
+      "fieldName" : "productId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "QUANTITY",
+      "oldName" : "QUANTITY",
+      "fieldName" : "quantity",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : true,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PRICE_PER_UNIT",
+      "oldName" : "PRICE_PER_UNIT",
+      "fieldName" : "pricePerUnit",
+      "sqlType" : "number",
+      "javaType" : "big_decimal",
+      "length" : 255,
+      "scale" : 9,
+      "precision" : 64,
+      "nullable" : true,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PRODUCT_LINE_AMOUNT",
+      "oldName" : "PRODUCT_LINE_AMOUNT",
+      "fieldName" : "productLineAmount",
+      "sqlType" : "number",
+      "javaType" : "big_decimal",
+      "length" : 255,
+      "scale" : 9,
+      "precision" : 64,
+      "nullable" : true,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    } ],
+    "primaryKey" : {
+      "name" : "SYS_PK_10194",
+      "virtual" : false,
+      "columns" : [ "ORDER_ID", "PRODUCT_ID" ],
+      "generator" : {
+        "generatorType" : "assigned",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "composite" : true
+    },
+    "temporals" : [ ],
+    "relations" : [ {
+      "name" : "SYS_FK_10196",
+      "fieldName" : "orders",
+      "cardinality" : "ManyToOne",
+      "sourceTable" : "ORDER_LINE_ITEMS",
+      "targetTable" : "ORDERS",
+      "mappings" : [ {
+        "sourceColumn" : "ORDER_ID",
+        "targetColumn" : "ORDER_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    }, {
+      "name" : "SYS_FK_10195",
+      "fieldName" : "productDetails",
+      "cardinality" : "ManyToOne",
+      "sourceTable" : "ORDER_LINE_ITEMS",
+      "targetTable" : "PRODUCT_DETAILS",
+      "mappings" : [ {
+        "sourceColumn" : "PRODUCT_ID",
+        "targetColumn" : "PRODUCT_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    } ],
+    "constraints" : [ ],
+    "tableDataLockingOptions" : {
+      "versionColumnName" : "VERSION",
+      "lockingStrategy" : "NONE",
+      "overrideStrategy" : "INHERIT"
+    }
+  }, {
+    "name" : "ORDERS",
+    "oldName" : "ORDERS",
+    "entityName" : "Orders",
+    "type" : "TABLE",
+    "schema" : "PUBLIC",
+    "catalog" : "PUBLIC",
+    "filter" : null,
+    "ignoreRefreshAfterInsert" : false,
+    "columns" : [ {
+      "name" : "ORDER_ID",
+      "oldName" : "ORDER_ID",
+      "fieldName" : "orderId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "USER_ID",
+      "oldName" : "USER_ID",
+      "fieldName" : "userId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "USER_ADDRESS_ID",
+      "oldName" : "USER_ADDRESS_ID",
+      "fieldName" : "userAddressId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "TOTAL_QUANTITY",
+      "oldName" : "TOTAL_QUANTITY",
+      "fieldName" : "totalQuantity",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : true,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "TOTAL_PRICE",
+      "oldName" : "TOTAL_PRICE",
+      "fieldName" : "totalPrice",
+      "sqlType" : "number",
+      "javaType" : "big_decimal",
+      "length" : 255,
+      "scale" : 9,
+      "precision" : 64,
+      "nullable" : true,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "ORDER_DATE",
+      "oldName" : "ORDER_DATE",
+      "fieldName" : "orderDate",
+      "sqlType" : "timestamp",
+      "javaType" : "timestamp",
+      "length" : 26,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "STATUS",
+      "oldName" : "STATUS",
+      "fieldName" : "status",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    } ],
+    "primaryKey" : {
+      "name" : "SYS_PK_10175",
+      "virtual" : false,
+      "columns" : [ "ORDER_ID" ],
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "composite" : false
+    },
+    "temporals" : [ ],
+    "relations" : [ {
+      "name" : "SYS_FK_10181",
+      "fieldName" : "userAddressDetails",
+      "cardinality" : "ManyToOne",
+      "sourceTable" : "ORDERS",
+      "targetTable" : "USER_ADDRESS_DETAILS",
+      "mappings" : [ {
+        "sourceColumn" : "USER_ADDRESS_ID",
+        "targetColumn" : "USER_ADDRESSS_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    }, {
+      "name" : "SYS_FK_10180",
+      "fieldName" : "userDetails",
+      "cardinality" : "ManyToOne",
+      "sourceTable" : "ORDERS",
+      "targetTable" : "USER_DETAILS",
+      "mappings" : [ {
+        "sourceColumn" : "USER_ID",
+        "targetColumn" : "USER_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    } ],
+    "constraints" : [ ],
+    "tableDataLockingOptions" : {
+      "versionColumnName" : "VERSION",
+      "lockingStrategy" : "NONE",
+      "overrideStrategy" : "INHERIT"
+    }
+  }, {
+    "name" : "CART_DETAILS",
+    "oldName" : "CART_DETAILS",
+    "entityName" : "CartDetails",
+    "type" : "TABLE",
+    "schema" : "PUBLIC",
+    "catalog" : "PUBLIC",
+    "filter" : null,
+    "ignoreRefreshAfterInsert" : false,
+    "columns" : [ {
+      "name" : "CART_ID",
+      "oldName" : "CART_ID",
+      "fieldName" : "cartId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "USER_ID",
+      "oldName" : "USER_ID",
+      "fieldName" : "userId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    } ],
+    "primaryKey" : {
+      "name" : "SYS_PK_10150",
+      "virtual" : false,
+      "columns" : [ "CART_ID" ],
+      "generator" : {
+        "generatorType" : "assigned",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "composite" : false
+    },
+    "temporals" : [ ],
+    "relations" : [ {
+      "name" : "SYS_FK_10153",
+      "fieldName" : "userDetails",
+      "cardinality" : "OneToOne",
+      "sourceTable" : "CART_DETAILS",
+      "targetTable" : "USER_DETAILS",
+      "mappings" : [ {
+        "sourceColumn" : "USER_ID",
+        "targetColumn" : "USER_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    } ],
+    "constraints" : [ {
+      "name" : "SYS_IDX_SYS_CT_10152_10157",
+      "schemaName" : null,
+      "type" : "UNIQUE",
+      "columns" : [ "USER_ID" ],
+      "virtual" : false,
+      "composite" : false
+    } ],
+    "tableDataLockingOptions" : {
+      "versionColumnName" : "VERSION",
+      "lockingStrategy" : "NONE",
+      "overrideStrategy" : "INHERIT"
+    }
+  }, {
+    "name" : "USER_ADDRESS_DETAILS",
+    "oldName" : "USER_ADDRESS_DETAILS",
+    "entityName" : "UserAddressDetails",
+    "type" : "TABLE",
+    "schema" : "PUBLIC",
+    "catalog" : "PUBLIC",
+    "filter" : null,
+    "ignoreRefreshAfterInsert" : false,
+    "columns" : [ {
+      "name" : "USER_ADDRESSS_ID",
+      "oldName" : "USER_ADDRESSS_ID",
+      "fieldName" : "userAddresssId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "USER_ID",
+      "oldName" : "USER_ID",
+      "fieldName" : "userId",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "ADDRESS",
+      "oldName" : "ADDRESS",
+      "fieldName" : "address",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "CITY",
+      "oldName" : "CITY",
+      "fieldName" : "city",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "STATE",
+      "oldName" : "STATE",
+      "fieldName" : "state",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "COUNTRY",
+      "oldName" : "COUNTRY",
+      "fieldName" : "country",
+      "sqlType" : "string",
+      "javaType" : "string",
+      "length" : 255,
+      "scale" : 2,
+      "precision" : 19,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    }, {
+      "name" : "PINCODE",
+      "oldName" : "PINCODE",
+      "fieldName" : "pincode",
+      "sqlType" : "number",
+      "javaType" : "integer",
+      "length" : 255,
+      "scale" : 0,
+      "precision" : 10,
+      "nullable" : false,
+      "hidden" : false,
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null
+    } ],
+    "primaryKey" : {
+      "name" : "SYS_PK_10131",
+      "virtual" : false,
+      "columns" : [ "USER_ADDRESSS_ID" ],
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "composite" : false
+    },
+    "temporals" : [ ],
+    "relations" : [ {
+      "name" : "SYS_FK_10138",
+      "fieldName" : "userDetails",
+      "cardinality" : "ManyToOne",
+      "sourceTable" : "USER_ADDRESS_DETAILS",
+      "targetTable" : "USER_DETAILS",
+      "mappings" : [ {
+        "sourceColumn" : "USER_ID",
+        "targetColumn" : "USER_ID"
+      } ],
+      "ignored" : false,
+      "cascadeEnabled" : true,
+      "cascadeOptions" : {
+        "cascadeRemove" : "REMOVE",
+        "cascadeReplace" : false
+      },
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "virtual" : false
+    } ],
+    "constraints" : [ ],
+    "tableDataLockingOptions" : {
+      "versionColumnName" : "VERSION",
+      "lockingStrategy" : "NONE",
+      "overrideStrategy" : "INHERIT"
+    }
+  } ],
+  "dataLockingOptions" : {
+    "versionColumnName" : "VERSION",
+    "lockingStrategy" : "NONE"
+  }
+}
