@@ -89,6 +89,6 @@
             </wm-layoutgrid> 
         </wm-page-content> 
     </wm-content> 
-    <wm-footer content="footer" name="footer1"></wm-footer>  
-    <wm-confirmdialog name="notificationconfirmdialog" controller="NotificationDialogController" notificationdialog="confirm" message="bind:(notification.text)" title="bind:(notification.title)" oktext="bind:(notification.okButtonText)" canceltext="bind:(notification.cancelButtonText)" on-ok="notification.onOk()" on-cancel="notification.onCancel()" on-close="notification.onClose()"></wm-confirmdialog>  
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+    <wm-confirmdialog name="notificationconfirmdialog" controller="NotificationDialogController" notificationdialog="confirm" message="bind:(notification.text)" title="bind:(notification.title)" oktext="bind:(notification.okButtonText)" canceltext="bind:(notification.cancelButtonText)" on-ok="Widgets.notificationconfirmdialog.close();notification.onOk()" on-cancel="Widgets.notificationconfirmdialog.close();notification.onCancel()" on-close="notification.onClose()"></wm-confirmdialog> 
 </wm-page>

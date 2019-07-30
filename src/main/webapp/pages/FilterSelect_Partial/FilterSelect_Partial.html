@@ -6,7 +6,7 @@
                     <wm-label class="control-label pull-left" name="label1" caption="Sort By" margin="1.2em .5em unset unset"></wm-label> 
                     <wm-select name="select_sort" dataset="bind:Variables.Static_Var_Select.dataSet" datafield="value" displayfield="lable" width="150px" margin=".5em 1em unset unset" datavalue="bind:dummy"></wm-select> 
                 </wm-container> 
-                <wm-checkbox caption="Include Out Of Stock" name="checkbox_outofstock" uncheckedvalue="false" on-change="checkbox_outofstockChange($event, widget, newVal, oldVal)" checkedvalue="true" datavalue="false" class="col-md-offset-6 col-md-3"></wm-checkbox> 
+                <wm-checkbox caption="Include Out Of Stock" name="checkbox_outofstock" uncheckedvalue="false" on-change="App.activePage.checkbox_outofstockChange($event, widget, newVal, oldVal)" checkedvalue="true" datavalue="false" class="col-md-offset-6 col-md-3"></wm-checkbox> 
             </wm-gridcolumn> 
         </wm-gridrow> 
     </wm-layoutgrid> 

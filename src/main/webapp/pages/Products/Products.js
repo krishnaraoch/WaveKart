@@ -1,7 +1,7 @@
 /* perform any action on widgets/variables within this block */
 
-Page.onReady = function () {
-    /*
+Page.onReady = function() {
+  /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
      * Page.Variables.loggedInUser.getData()
@@ -12,24 +12,17 @@ Page.onReady = function () {
      */
 
 };
-
-Page.SelectedProductDataonSuccess = function (variable, data) {
-    Page.Variables.BreadCrumb_Var.setItem(1, {
-        "PageName": data[0].category,
-        "Link": "#/" + data[0].category
-    });
-
-    Page.Variables.BreadCrumb_Var.setItem(2, {
-        "PageName": data[0].productName
-    });
-
+Page.SelectedProductDataonSuccess = function(variable, data) {
+  Page.Variables.BreadCrumb_Var.setItem(1, {
+  "PageName": data[0].category, 
+  "Link": "#/" + data[0].category});
+  Page.Variables.BreadCrumb_Var.setItem(2, {
+  "PageName": data[0].productName});
 };
-
-Page.LV_Cart_InfoonSuccess = function (variable, data) {
-    if (data.length) {
-        Page.Variables.LV_UpdateCartItems_Quantity.updateRecord();
-    } else {
-        Page.Variables.Insert_into_Cart.createRecord();
-    }
+Page.LV_Cart_InfoonSuccess = function(variable, data) {
+  if (data.length) {
+    Page.Variables.LV_UpdateCartItems_Quantity.updateRecord();
+  } else {
+    Page.Variables.Insert_into_Cart.createRecord();
+  }
 };
-

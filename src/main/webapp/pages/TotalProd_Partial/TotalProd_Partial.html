@@ -29,10 +29,10 @@
                 </wm-card-content> 
             </wm-card> 
         </wm-listtemplate> 
-    </wm-list>  
+    </wm-list> 
     <wm-dialog dialogtype="design-dialog" modal="true" title="Product Specifications" iconclass="" name="dialog_prodSpec" on-close="dialog_prodSpec_dialog_prodSpecClose($event, widget)" closable="true"> 
         <wm-dialogactions name="dialogactions1" show="false"> 
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button1"></wm-button> 
+            <wm-button class="btn-primary" caption="Close" on-click="App.activePage.closeDialog()" name="button1"></wm-button> 
         </wm-dialogactions> 
         <wm-layoutgrid name="layoutgrid3"> 
             <wm-gridrow name="gridrow8" padding="2em unset unset unset"> 
@@ -51,5 +51,5 @@
                 </wm-gridcolumn> 
             </wm-gridrow> 
         </wm-layoutgrid> 
-    </wm-dialog>  
+    </wm-dialog> 
 </wm-partial>

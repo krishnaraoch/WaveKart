@@ -116,6 +116,9 @@
     <listener>
         <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
     </listener>
+    <listener>
+        <listener-class>com.wavemaker.runtime.web.listener.AppNameMDCStartStopListener</listener-class>
+    </listener>
 
     <!--
       Location of the XML file that defines the root application context.
@@ -125,6 +128,19 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/project-springapp.xml,classpath:**/*prefab-services.xml</param-value>
     </context-param>
+
+    <filter>
+        <filter-name>requestTrackingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>requestTrackingFilter</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>requestTrackingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     
     <filter>
         <filter-name>gzipCompressionFilter</filter-name>

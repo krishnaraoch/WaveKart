@@ -71,7 +71,7 @@
             <param name="cmd.name" value="mvn"/>
             <!--Artifact groupId:artifactId:version[:packaging[:classifier]]. -DrepoUrl=${wavemaker.repo.url}-->
             <param name="cmd.arg"
-                   value="org.apache.maven.plugins:maven-dependency-plugin:3.1.1:unpack -Dartifact=com.wavemaker.app.build:wavemaker-ng-codegen:${wavemaker.studio.version}:zip:wmapp -DoutputDirectory=${angular-out-directory}"/>
+                   value="org.apache.maven.plugins:maven-dependency-plugin:3.1.1:unpack -Dartifact=com.wavemaker.app.build:wavemaker-ng-codegen:${wavemaker.studio.version}:zip:wmapp -DoutputDirectory=&quot;${angular-out-directory}&quot;"/>
             <param name="cmd.executable.dir" value="./"/>
         </antcall>
     </target>
@@ -97,7 +97,7 @@
             <param name="cmd.name" value="mvn"/>
             <!--Artifact groupId:artifactId:version[:packaging[:classifier]].-->
             <param name="cmd.arg"
-                   value="org.apache.maven.plugins:maven-dependency-plugin:3.1.1:unpack  -Dartifact=com.wavemaker.runtime:wavemaker-app-runtime:${wavemaker.studio.version}:zip:${wavemaker.artifactType} -DoutputDirectory=${basedir}/src/main/webapp/${wavemaker.artifactStaticFolder}"/>
+                   value="org.apache.maven.plugins:maven-dependency-plugin:3.1.1:unpack  -Dartifact=com.wavemaker.runtime:wavemaker-app-runtime:${wavemaker.studio.version}:zip:${wavemaker.artifactType} -DoutputDirectory=&quot;${basedir}/src/main/webapp/${wavemaker.artifactStaticFolder}&quot;"/>
             <param name="cmd.executable.dir" value="./"/>
         </antcall>
     </target>
